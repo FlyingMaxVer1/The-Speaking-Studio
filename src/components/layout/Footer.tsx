@@ -31,8 +31,6 @@ const footerLinks = {
     { label: 'Join Us', href: '/join' },
     { label: 'Mentorship', href: '/mentorship' },
     { label: 'Community', href: '/community' },
-    { label: 'Events', href: '/events' },
-    { label: 'Resources', href: '/resources' },
     { label: 'Forms', href: '/forms' },
     { label: 'Contact', href: '/contact' },
   ],

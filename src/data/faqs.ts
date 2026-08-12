@@ -84,18 +84,18 @@ export const faqs: FAQ[] = [
     answer: 'Our WhatsApp community is where members receive session announcements, resources, daily challenges, peer discussions, event updates, and exclusive content. It\'s a vibrant, moderated space for meaningful student interaction.',
     category: 'Community',
   },
-  // Events
+  // Sessions & Workshops
   {
     id: 'e1',
-    question: 'How do I register for events?',
-    answer: 'Visit our Forms page and fill out the Session Registration form, or check individual event listings on our Events page for specific registration links.',
-    category: 'Events',
+    question: 'How do I register for sessions and workshops?',
+    answer: 'Visit our Forms page and fill out the Session Registration form, or join our WhatsApp community to receive direct registration links and schedule announcements.',
+    category: 'General',
   },
   {
     id: 'e2',
-    question: 'Are events free?',
-    answer: 'Many of our orientation sessions, webinars, and community events are free to attend. Workshops, conferences, and competitive events may have a nominal participation fee. All pricing is clearly stated in advance.',
-    category: 'Events',
+    question: 'Are mentorship sessions free?',
+    answer: 'Yes! Our regular orientation sessions, introductory webinars, and free mentorship classes are completely free to attend for all students.',
+    category: 'Mentorship',
   },
   // Contact
   {
@@ -112,4 +112,5 @@ export const faqs: FAQ[] = [
   },
 ];
 
-export const faqCategories = ['General', 'Programs', 'Mentorship', 'Community', 'Events', 'Contact'];
+export const faqCategories = ['General', 'Programs', 'Mentorship', 'Community', 'Contact'];
+

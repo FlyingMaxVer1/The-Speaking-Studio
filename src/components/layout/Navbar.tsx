@@ -28,8 +28,6 @@ const navLinks = [
   },
   { label: 'Mentorship', href: '/mentorship' },
   { label: 'Community', href: '/community' },
-  { label: 'Events', href: '/events' },
-  { label: 'Resources', href: '/resources' },
   { label: 'Team', href: '/team' },
   { label: 'Contact', href: '/contact' },
 ];
