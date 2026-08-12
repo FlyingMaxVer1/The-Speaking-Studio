@@ -1,29 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Mic, Globe, MessageSquare, Crown, BookOpen, Star, Users, CheckCircle2, Sparkles, ChevronRight } from 'lucide-react';
+import { ArrowRight, Mic, Globe, Crown, Star, Users, CheckCircle2, Sparkles, ChevronRight, Award } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
-import StatsSection from '@/components/sections/StatsSection';
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel';
 import ProgramCard from '@/components/sections/ProgramCard';
-import EventCard from '@/components/sections/EventCard';
 import CTASection from '@/components/sections/CTASection';
 import { programs } from '@/data/programs';
-import { events } from '@/data/events';
+import { FREE_MENTORSHIP_FORM_URL, JOIN_TEAM_FORM_URL } from '@/data/forms';
 
 export const metadata: Metadata = {
-  title: 'Home — Empowering Tomorrow\'s Leaders',
-  description: 'The Speaking Studio is a youth-led educational organisation developing confidence, communication, leadership, and life skills. Join our community today.',
+  title: 'Home — Empowering Young Voices. Inspiring Young Leaders.',
+  description: 'The Speaking Studio is a youth-led educational organisation developing confidence, communication, leadership, and public speaking skills for 430+ students.',
 };
 
 const featuredPrograms = programs.slice(0, 6);
-const upcomingEvents = events.filter((e) => e.status === 'upcoming').slice(0, 3);
 
 const whyChooseUs = [
   {
     icon: Users,
     title: 'Student-Led',
-    description: 'Founded and driven by students who understand what young learners truly need.',
+    description: 'Founded and driven by young leaders who understand what students truly need to succeed.',
     color: '#5C6B3A',
   },
   {
@@ -34,26 +31,26 @@ const whyChooseUs = [
   },
   {
     icon: Star,
-    title: 'Expert Mentorship',
-    description: 'Learn from experienced mentors and practitioners across all program areas.',
+    title: 'Free Mentorship',
+    description: 'Regular free mentoring sessions led by experienced mentors in public speaking, debate, and MUN.',
     color: '#8B6914',
   },
   {
     icon: Globe,
-    title: 'Community Driven',
-    description: 'Be part of a thriving community of 1,000+ students across India.',
+    title: 'Growing Community',
+    description: 'Be part of a thriving community of 430+ students empowering each other.',
     color: '#5C6B3A',
   },
   {
     icon: Crown,
     title: 'Leadership Focused',
-    description: 'Every program is designed with leadership development at its core.',
+    description: 'Every program is designed with youth empowerment and leadership development at its core.',
     color: '#C49A6C',
   },
   {
-    icon: CheckCircle2,
-    title: 'Practical Skills',
-    description: 'Skills you can immediately apply in academics, competitions, and daily life.',
+    icon: Award,
+    title: 'Globally Recognized',
+    description: 'Proud recipient of the 2026 Global Recognition Award for excellence in student education.',
     color: '#8B6914',
   },
 ];
@@ -85,59 +82,56 @@ export default function HomePage() {
             <div className="space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-[#C49A6C]/30 rounded-full px-4 py-2 shadow-sm">
-                <Sparkles size={14} className="text-[#C49A6C]" />
-                <span className="text-xs font-semibold text-[#5C6B3A]">Youth-Led Educational Organisation</span>
+                <Award size={14} className="text-[#C49A6C]" />
+                <span className="text-xs font-semibold text-[#5C6B3A]">2026 Global Recognition Award Winner</span>
               </div>
 
               {/* Headline */}
               <div>
-                <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] text-[#1C1C1C]">
-                  Empowering{' '}
-                  <span className="gradient-text">Tomorrow&apos;s</span>{' '}
-                  <br />Leaders
+                <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-[#1C1C1C]">
+                  Empowering Young Voices.<br />
+                  <span className="gradient-text">Inspiring Young Leaders.</span>
                 </h1>
               </div>
 
               {/* Sub */}
               <p className="text-stone-600 text-lg sm:text-xl leading-relaxed max-w-xl">
-                Develop confidence, communication, leadership, and diplomacy through expert programs, mentorship, and a vibrant student community.
+                A youth-led platform dedicated to empowering students with the confidence to communicate, lead, and create meaningful impact through training in public speaking, debate, MUN, and leadership.
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/join"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#5C6B3A] text-white rounded-xl font-semibold text-sm hover:bg-[#404B28] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 group"
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                <a
+                  href={FREE_MENTORSHIP_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5C6B3A] text-white rounded-xl font-semibold text-sm hover:bg-[#404B28] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 group"
                 >
-                  Join Our Community
+                  Free Mentorship Class
                   <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-                <Link
-                  href="/mentorship"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-[#1C1C1C] rounded-xl font-semibold text-sm border border-stone-200 hover:border-[#C49A6C] hover:text-[#C49A6C] transition-all duration-200 shadow-sm"
+                </a>
+                <a
+                  href={JOIN_TEAM_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#C49A6C] text-white rounded-xl font-semibold text-sm hover:bg-[#A07845] transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
                 >
-                  Apply for Mentorship
-                </Link>
-                <Link
-                  href="/forms"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#C49A6C] text-white rounded-xl font-semibold text-sm hover:bg-[#A07845] transition-all duration-200 shadow-sm"
-                >
-                  Register for Sessions
-                </Link>
+                  Join the Team
+                </a>
               </div>
 
               {/* Trust indicators */}
               <div className="flex flex-wrap items-center gap-6 pt-2">
                 {[
-                  { label: '500+ Students', sub: 'Mentored' },
-                  { label: '1000+ Members', sub: 'Community' },
-                  { label: '9 Programs', sub: 'Available' },
+                  { label: '430+ Students', sub: 'Growing Community' },
+                  { label: 'Free Mentoring', sub: 'Sessions' },
+                  { label: 'Youth-Led', sub: 'Platform' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-[#5C6B3A]" />
                     <div>
                       <span className="font-semibold text-sm text-[#1C1C1C]">{item.label}</span>
-                      <span className="text-stone-500 text-sm ml-1">{item.sub}</span>
+                      <span className="text-stone-500 text-xs block">{item.sub}</span>
                     </div>
                   </div>
                 ))}
@@ -167,7 +161,7 @@ export default function HomePage() {
                 <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg border border-stone-100 px-4 py-3 animate-float" style={{ animationDelay: '0s' }}>
                   <div className="flex items-center gap-2">
                     <Mic size={16} className="text-[#5C6B3A]" />
-                    <span className="text-xs font-semibold text-[#1C1C1C]">Public Speaking</span>
+                    <span className="text-xs font-semibold text-[#1C1C1C]">Public Speaking & Debate</span>
                   </div>
                 </div>
                 <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg border border-stone-100 px-4 py-3 animate-float" style={{ animationDelay: '2s' }}>
@@ -179,7 +173,7 @@ export default function HomePage() {
                 <div className="absolute top-1/2 -right-8 bg-white rounded-2xl shadow-lg border border-stone-100 px-4 py-3 animate-float" style={{ animationDelay: '4s' }}>
                   <div className="flex items-center gap-2">
                     <Crown size={16} className="text-[#8B6914]" />
-                    <span className="text-xs font-semibold text-[#1C1C1C]">Leadership</span>
+                    <span className="text-xs font-semibold text-[#1C1C1C]">Leadership Skills</span>
                   </div>
                 </div>
               </div>
@@ -195,15 +189,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── STATS ────────────────────────────────────────────── */}
-      <section className="py-16 bg-[#FAFAF7]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <StatsSection />
-        </div>
-      </section>
-
       {/* ─── FEATURED PROGRAMS ────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#FAFAF7]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <SectionHeading
@@ -234,7 +221,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Why Us"
             title="Why Choose The Speaking Studio?"
-            description="We are not just another coaching centre. We are a community built by students, for students."
+            description="We are a youth-led platform committed to accessible, high-impact skill training for 430+ students."
             className="mb-14"
           />
 
@@ -265,7 +252,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="What Students Say"
             title="Real Stories, Real Impact"
-            description="Hear from the students, parents, and mentors who have experienced The Speaking Studio firsthand."
+            description="Hear from the students and mentors who have experienced The Speaking Studio firsthand."
             className="mb-14"
           />
           <TestimonialsCarousel />
@@ -281,41 +268,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── UPCOMING EVENTS ──────────────────────────────────── */}
-      <section className="py-20 bg-[#F5F0E8]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <SectionHeading
-              eyebrow="What's Coming"
-              title="Upcoming Events"
-              description="Register for our next workshops, bootcamps, and conferences."
-              centered={false}
-            />
-            <Link
-              href="/events"
-              className="flex items-center gap-2 text-[#5C6B3A] font-semibold text-sm hover:gap-3 transition-all duration-200 flex-shrink-0"
-            >
-              View All Events <ChevronRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {upcomingEvents.map((event, i) => (
-              <EventCard key={event.id} event={event} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── CTA ──────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <CTASection
             eyebrow="Your Journey Starts Here"
             title="Ready to Find Your Voice and Lead with Confidence?"
-            description="Join thousands of students who have transformed their communication, built their confidence, and unlocked their leadership potential with The Speaking Studio."
-            primaryCta={{ label: 'Join Our Community', href: '/join' }}
-            secondaryCta={{ label: 'Explore Programs', href: '/programs' }}
+            description="Join 430+ students who have transformed their communication, built their confidence, and unlocked their leadership potential with The Speaking Studio."
+            primaryCta={{ label: 'Register for Free Mentorship', href: FREE_MENTORSHIP_FORM_URL }}
+            secondaryCta={{ label: 'Join the Team', href: JOIN_TEAM_FORM_URL }}
           />
         </div>
       </section>

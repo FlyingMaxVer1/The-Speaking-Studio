@@ -1,81 +1,62 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, GraduationCap, Star, Heart, Users, Handshake, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, GraduationCap, Star, Heart, Users, Handshake, CheckCircle2, MessageCircle } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { FREE_MENTORSHIP_FORM_URL, JOIN_TEAM_FORM_URL, WHATSAPP_COMMUNITY_URL } from '@/data/forms';
 
 export const metadata: Metadata = {
   title: 'Join Us',
-  description: 'Join The Speaking Studio as a student, mentor, volunteer, team member, or partner. Find the right path for you.',
+  description: 'Join The Speaking Studio community of 430+ students — Register for free mentorship sessions or join our team.',
 };
 
 const paths = [
   {
     id: 'student',
     icon: GraduationCap,
-    title: 'Become a Student',
-    description: 'Enroll in our programs and start your journey to becoming a confident communicator and leader.',
+    title: 'Register for Free Mentorship',
+    description: 'Enroll in our free mentoring sessions and start your journey to becoming a confident communicator and leader.',
     benefits: [
-      'Access to all 9 skill development programs',
+      'Access to interactive skill development sessions',
       'One-on-one mentorship opportunities',
-      'Community membership with 1000+ peers',
+      'Community membership with 430+ peers',
       'Certificates upon completion',
-      'Priority access to events and workshops',
+      'Training in public speaking, debate, MUN & leadership',
     ],
-    cta: 'Register as Student',
-    href: '/forms',
+    cta: 'Register for Free Class',
+    href: FREE_MENTORSHIP_FORM_URL,
     color: '#5C6B3A',
-    bg: 'bg-[#5C6B3A]',
-  },
-  {
-    id: 'mentor',
-    icon: Star,
-    title: 'Become a Mentor',
-    description: 'Share your expertise, guide the next generation of leaders, and make a lasting impact.',
-    benefits: [
-      'Develop your coaching and leadership skills',
-      'Build your professional and student network',
-      'Receive recognition and mentorship certificate',
-      'Be featured on our platforms',
-      'Flexible scheduling — mentor at your pace',
-    ],
-    cta: 'Apply as Mentor',
-    href: '/forms',
-    color: '#C49A6C',
-    bg: 'bg-[#C49A6C]',
-  },
-  {
-    id: 'volunteer',
-    icon: Heart,
-    title: 'Volunteer',
-    description: 'Contribute to events, workshops, and community initiatives while gaining valuable experience.',
-    benefits: [
-      'Volunteer recognition certificate',
-      'Event management experience',
-      'Networking with team and mentors',
-      'Letter of recommendation (merit-based)',
-      'Be part of something meaningful',
-    ],
-    cta: 'Register as Volunteer',
-    href: '/forms',
-    color: '#8B6914',
-    bg: 'bg-[#8B6914]',
   },
   {
     id: 'team',
     icon: Users,
     title: 'Join the Team',
-    description: 'Become a core team member — drive our mission, build programs, and lead our community.',
+    description: 'Become a core team member or mentor — drive our mission, build programs, and lead our community.',
     benefits: [
-      'Leadership experience in a growing organisation',
+      'Leadership experience in a recognized youth organisation',
       'Work alongside passionate student leaders',
       'Build real-world skills in education and management',
-      'Co-create programs and events',
-      'Earn recognition as a team member',
+      'Co-create programs, workshops, and competitions',
+      'Earn recognition and team certificates',
     ],
-    cta: 'Apply to Team',
-    href: '/forms',
-    color: '#5C6B3A',
-    bg: 'bg-[#5C6B3A]',
+    cta: 'Apply to Join Team',
+    href: JOIN_TEAM_FORM_URL,
+    color: '#C49A6C',
+  },
+  {
+    id: 'whatsapp',
+    icon: MessageCircle,
+    title: 'Join WhatsApp Community',
+    description: 'Connect directly with 430+ student leaders and receive real-time updates for workshops and mentoring.',
+    benefits: [
+      'Direct updates on free mentorship schedules',
+      'Networking with peer debaters and MUN delegates',
+      'Instant access to resources and event announcements',
+      'Interactive discussions and collaboration',
+      '100% free to join and participate',
+    ],
+    cta: 'Join WhatsApp Group',
+    href: WHATSAPP_COMMUNITY_URL,
+    color: '#25D366',
   },
   {
     id: 'partner',
@@ -85,14 +66,13 @@ const paths = [
     benefits: [
       'Co-branded events and workshops',
       'Joint outreach and community building',
-      'Access to our student network',
+      'Access to our student network of 430+ members',
       'Shared brand visibility and impact',
       'Flexible partnership models available',
     ],
     cta: 'Explore Partnership',
     href: '/contact',
-    color: '#C49A6C',
-    bg: 'bg-[#C49A6C]',
+    color: '#8B6914',
   },
 ];
 
@@ -110,8 +90,8 @@ export default function JoinPage() {
             Find Your Place at<br />
             <span className="text-[#C49A6C]">The Speaking Studio</span>
           </h1>
-          <p className="text-white/75 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            Whether you want to learn, teach, contribute, or collaborate — there is a role for everyone in our community.
+          <p className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            Register for free mentorship sessions, apply to join our passionate team, or join 430+ students on WhatsApp.
           </p>
         </div>
       </section>
@@ -122,7 +102,7 @@ export default function JoinPage() {
           <SectionHeading
             eyebrow="Choose Your Path"
             title="How Would You Like to Join?"
-            description="Select the option that best describes how you want to be involved."
+            description="Select an option below to get started with the official registration form or community group."
             className="mb-14"
           />
 
@@ -144,14 +124,27 @@ export default function JoinPage() {
                       </div>
                       <h3 className="font-display font-bold text-[#1C1C1C] text-2xl mb-3">{path.title}</h3>
                       <p className="text-stone-600 text-sm leading-relaxed mb-6">{path.description}</p>
-                      <Link
-                        href={path.href}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 group"
-                        style={{ backgroundColor: path.color }}
-                      >
-                        {path.cta}
-                        <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                      </Link>
+                      {path.href.startsWith('http') ? (
+                        <a
+                          href={path.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 group"
+                          style={{ backgroundColor: path.color }}
+                        >
+                          {path.cta}
+                          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      ) : (
+                        <Link
+                          href={path.href}
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 group"
+                          style={{ backgroundColor: path.color }}
+                        >
+                          {path.cta}
+                          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                        </Link>
+                      )}
                     </div>
 
                     {/* Right: Benefits */}

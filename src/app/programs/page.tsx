@@ -3,6 +3,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import ProgramCard from '@/components/sections/ProgramCard';
 import CTASection from '@/components/sections/CTASection';
 import { programs } from '@/data/programs';
+import { FREE_MENTORSHIP_FORM_URL } from '@/data/forms';
 
 export const metadata: Metadata = {
   title: 'Programs',
@@ -48,8 +49,8 @@ export default function ProgramsPage() {
           <CTASection
             eyebrow="Start Learning"
             title="Not Sure Which Program to Choose?"
-            description="Tell us your goals and we'll help you find the perfect program. Or register for a free orientation session to explore everything we offer."
-            primaryCta={{ label: 'Register for Orientation', href: '/forms' }}
+            description="Register for a free mentorship session to get guidance on your learning path."
+            primaryCta={{ label: 'Register for Free Mentorship', href: FREE_MENTORSHIP_FORM_URL }}
             secondaryCta={{ label: 'Contact Us', href: '/contact' }}
             variant="olive"
           />
@@ -58,3 +59,4 @@ export default function ProgramsPage() {
     </>
   );
 }
+

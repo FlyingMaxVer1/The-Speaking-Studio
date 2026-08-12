@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import SectionHeading from '@/components/ui/SectionHeading';
-import StatsSection from '@/components/sections/StatsSection';
 import CTASection from '@/components/sections/CTASection';
 import { milestones } from '@/data/achievements';
+import { FREE_MENTORSHIP_FORM_URL, JOIN_TEAM_FORM_URL } from '@/data/forms';
+import { Award, Users, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Achievements',
-  description: 'Explore the milestones, achievements, and impact of The Speaking Studio since its founding.',
+  description: 'Explore the milestones, achievements, and impact of The Speaking Studio — winner of the 2026 Global Recognition Award.',
 };
 
 export default function AchievementsPage() {
@@ -21,22 +22,43 @@ export default function AchievementsPage() {
           <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6">
             Our <span className="text-[#C49A6C]">Achievements</span>
           </h1>
-          <p className="text-white/75 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            Every number tells a story. Every milestone represents a student whose life we touched.
+          <p className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            Recognized with the 2026 Global Recognition Award, empowering 430+ students across public speaking, debate, MUN, and leadership.
           </p>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Highlights */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <SectionHeading
-            eyebrow="By the Numbers"
-            title="Our Impact in Numbers"
-            description="From our first session to today — a snapshot of the difference we've made."
+            eyebrow="Key Recognition"
+            title="Excellence & Impact"
+            description="Our dedication to quality youth education has been recognized globally."
             className="mb-14"
           />
-          <StatsSection />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-[#FAFAF7] rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col items-start justify-between">
+              <div className="w-14 h-14 rounded-2xl bg-[#C49A6C]/15 flex items-center justify-center text-[#C49A6C] mb-6">
+                <Award size={32} />
+              </div>
+              <h3 className="font-display font-bold text-[#1C1C1C] text-2xl mb-3">2026 Global Recognition Award</h3>
+              <p className="text-stone-600 leading-relaxed text-sm">
+                Awarded for outstanding contributions to youth empowerment, accessible communication training, and fostering the next generation of student leaders.
+              </p>
+            </div>
+
+            <div className="bg-[#FAFAF7] rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col items-start justify-between">
+              <div className="w-14 h-14 rounded-2xl bg-[#5C6B3A]/15 flex items-center justify-center text-[#5C6B3A] mb-6">
+                <Users size={32} />
+              </div>
+              <h3 className="font-display font-bold text-[#1C1C1C] text-2xl mb-3">430+ Active Learners</h3>
+              <p className="text-stone-600 leading-relaxed text-sm">
+                A rapidly growing student community receiving free mentoring sessions, interactive workshops, and leadership development across India and beyond.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -46,7 +68,7 @@ export default function AchievementsPage() {
           <SectionHeading
             eyebrow="Our Journey"
             title="Milestones & Growth"
-            description="From a small student initiative to a thriving educational organisation."
+            description="From a small student initiative to a globally recognized educational platform."
             className="mb-14"
           />
 
@@ -87,11 +109,12 @@ export default function AchievementsPage() {
             eyebrow="Be Part of History"
             title="Help Us Write the Next Chapter"
             description="Our best achievements are still ahead of us — and they will be written by students like you."
-            primaryCta={{ label: 'Join the Community', href: '/join' }}
-            secondaryCta={{ label: 'View Programs', href: '/programs' }}
+            primaryCta={{ label: 'Register for Free Mentorship', href: FREE_MENTORSHIP_FORM_URL }}
+            secondaryCta={{ label: 'Join the Team', href: JOIN_TEAM_FORM_URL }}
           />
         </div>
       </section>
     </>
   );
 }
+

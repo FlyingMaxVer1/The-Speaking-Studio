@@ -1,20 +1,20 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { MessageCircle, Users, Bell, Share2, BookOpen, ArrowRight, Heart } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTASection from '@/components/sections/CTASection';
+import { FREE_MENTORSHIP_FORM_URL, JOIN_TEAM_FORM_URL, WHATSAPP_COMMUNITY_URL } from '@/data/forms';
 
 export const metadata: Metadata = {
   title: 'Community',
-  description: 'Join The Speaking Studio community — a thriving network of 1000+ students passionate about communication, leadership, and growth.',
+  description: 'Join The Speaking Studio community — a thriving network of 430+ students passionate about public speaking, debate, MUN, and leadership.',
 };
 
 const features = [
-  { icon: MessageCircle, title: 'Active WhatsApp Community', description: 'Join our primary community channel where members receive daily updates, resources, challenges, and announcements.' },
+  { icon: MessageCircle, title: 'Active WhatsApp Community', description: 'Join our primary community channel where 430+ members receive daily updates, resources, challenges, and announcements.' },
   { icon: Users, title: 'Peer-to-Peer Networking', description: 'Connect with like-minded students from across India who share your passion for communication and leadership.' },
-  { icon: Bell, title: 'Instant Announcements', description: 'Be the first to know about new programs, events, workshops, and opportunities.' },
-  { icon: BookOpen, title: 'Exclusive Resources', description: 'Access resources, templates, and guides shared exclusively within the community.' },
-  { icon: Share2, title: 'Collaboration Opportunities', description: 'Find partners for debate practice, MUN preparation, projects, and creative collaborations.' },
+  { icon: Bell, title: 'Instant Announcements', description: 'Be the first to know about free mentorship sessions, workshops, competitions, and opportunities.' },
+  { icon: BookOpen, title: 'Exclusive Resources', description: 'Access speech templates, debate frameworks, and MUN resolution guides shared exclusively within the community.' },
+  { icon: Share2, title: 'Collaboration Opportunities', description: 'Find practice partners for debate sessions, MUN committee prep, and student-led projects.' },
   { icon: Heart, title: 'Supportive Environment', description: 'A moderated, positive space where every member feels welcome, respected, and supported.' },
 ];
 
@@ -35,21 +35,26 @@ export default function CommunityPage() {
             Our <span className="gradient-text">Community</span>
           </h1>
           <p className="text-stone-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
-            1,000+ students. One shared mission. A thriving network of passionate communicators, aspiring leaders, and lifelong learners.
+            430+ students. One shared mission. A thriving network of passionate communicators, aspiring leaders, and lifelong learners.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/forms"
-              className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#5C6B3A] text-white rounded-xl font-semibold text-sm hover:bg-[#404B28] transition-all duration-200 shadow-lg group"
+            <a
+              href={WHATSAPP_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#25D366] text-white rounded-xl font-semibold text-sm hover:bg-[#128C7E] transition-all duration-200 shadow-lg hover:scale-105 group"
             >
-              Join the Community <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-            <Link
-              href="/forms"
-              className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white border border-stone-200 text-stone-700 rounded-xl font-semibold text-sm hover:border-[#C49A6C] hover:text-[#C49A6C] transition-all duration-200"
+              <MessageCircle size={18} />
+              Join WhatsApp Community <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <a
+              href={FREE_MENTORSHIP_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#5C6B3A] text-white rounded-xl font-semibold text-sm hover:bg-[#404B28] transition-all duration-200 shadow-md hover:scale-105"
             >
-              Join WhatsApp Group
-            </Link>
+              Register for Free Class
+            </a>
           </div>
         </div>
       </section>
@@ -112,12 +117,13 @@ export default function CommunityPage() {
           <CTASection
             eyebrow="Join Today"
             title="Your Tribe is Waiting"
-            description="Over 1,000 students have already found their community at The Speaking Studio. Don't miss out — join us today."
-            primaryCta={{ label: 'Join the Community', href: '/forms' }}
-            secondaryCta={{ label: 'Contact Us', href: '/contact' }}
+            description="430+ students have already found their community at The Speaking Studio. Don't miss out — join us on WhatsApp today."
+            primaryCta={{ label: 'Join WhatsApp Community', href: WHATSAPP_COMMUNITY_URL }}
+            secondaryCta={{ label: 'Join the Team', href: JOIN_TEAM_FORM_URL }}
           />
         </div>
       </section>
     </>
   );
 }
+

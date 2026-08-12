@@ -80,29 +80,63 @@ export default function CTASection({
           )}
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href={primaryCta.href}
-              className={cn(
-                'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg group',
-                isLight
-                  ? 'bg-[#5C6B3A] text-white hover:bg-[#404B28]'
-                  : 'bg-white text-[#5C6B3A] hover:bg-stone-50'
-              )}
-            >
-              {primaryCta.label}
-              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-            <Link
-              href={secondaryCta.href}
-              className={cn(
-                'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 border',
-                isLight
-                  ? 'border-[#5C6B3A] text-[#5C6B3A] hover:bg-[#5C6B3A] hover:text-white'
-                  : 'border-white/30 text-white hover:bg-white/10'
-              )}
-            >
-              {secondaryCta.label}
-            </Link>
+            {primaryCta.href.startsWith('http') ? (
+              <a
+                href={primaryCta.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg group',
+                  isLight
+                    ? 'bg-[#5C6B3A] text-white hover:bg-[#404B28]'
+                    : 'bg-white text-[#5C6B3A] hover:bg-stone-50'
+                )}
+              >
+                {primaryCta.label}
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+              </a>
+            ) : (
+              <Link
+                href={primaryCta.href}
+                className={cn(
+                  'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg group',
+                  isLight
+                    ? 'bg-[#5C6B3A] text-white hover:bg-[#404B28]'
+                    : 'bg-white text-[#5C6B3A] hover:bg-stone-50'
+                )}
+              >
+                {primaryCta.label}
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            )}
+
+            {secondaryCta.href.startsWith('http') ? (
+              <a
+                href={secondaryCta.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 border',
+                  isLight
+                    ? 'border-[#5C6B3A] text-[#5C6B3A] hover:bg-[#5C6B3A] hover:text-white'
+                    : 'border-white/30 text-white hover:bg-white/10'
+                )}
+              >
+                {secondaryCta.label}
+              </a>
+            ) : (
+              <Link
+                href={secondaryCta.href}
+                className={cn(
+                  'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 border',
+                  isLight
+                    ? 'border-[#5C6B3A] text-[#5C6B3A] hover:bg-[#5C6B3A] hover:text-white'
+                    : 'border-white/30 text-white hover:bg-white/10'
+                )}
+              >
+                {secondaryCta.label}
+              </Link>
+            )}
           </div>
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { LucideProps } from 'lucide-react';
 import { programs } from '@/data/programs';
+import { FREE_MENTORSHIP_FORM_URL } from '@/data/forms';
 import CTASection from '@/components/sections/CTASection';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import ProgramCard from '@/components/sections/ProgramCard';
@@ -92,14 +93,16 @@ export default async function ProgramDetailPage({ params }: { params: Promise<Pa
                 {program.fullDescription}
               </p>
 
-              <Link
-                href="/forms"
+              <a
+                href={FREE_MENTORSHIP_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-white text-sm hover:scale-105 hover:shadow-lg transition-all duration-200 group"
                 style={{ backgroundColor: program.color }}
               >
-                Register Now
+                Register for Free Mentorship
                 <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+              </a>
             </div>
 
             {/* Right card: Skills */}
@@ -217,8 +220,8 @@ export default async function ProgramDetailPage({ params }: { params: Promise<Pa
           <CTASection
             eyebrow="Enroll Today"
             title={`Ready to Master ${program.title}?`}
-            description="Limited seats available. Register now to secure your spot in the next cohort."
-            primaryCta={{ label: 'Register Now', href: '/forms' }}
+            description="Register for a free mentorship session to get started."
+            primaryCta={{ label: 'Register for Free Class', href: FREE_MENTORSHIP_FORM_URL }}
             secondaryCta={{ label: 'Contact Us', href: '/contact' }}
           />
         </div>

@@ -7,6 +7,7 @@ export interface TeamMember {
   department: string;
   bio: string;
   image?: string;
+  imagePosition?: string;
   social: {
     instagram?: string;
     linkedin?: string;
@@ -16,73 +17,83 @@ export interface TeamMember {
   };
   isFounder?: boolean;
   isLead?: boolean;
+  isExecutive?: boolean;
 }
 
 export const team: TeamMember[] = [
   {
-    id: 'founder-01',
-    name: 'The Speaking Studio Team',
-    position: 'Founder & Director',
-    department: 'Leadership',
-    bio: 'A passionate young leader committed to empowering students with the skills to communicate confidently and lead purposefully. Founded The Speaking Studio with a vision to make quality skill development accessible to every student.',
+    id: 'vaishnavi-verma',
+    name: 'Vaishnavi Verma',
+    position: 'Founder & CEO',
+    department: 'Executive Leadership',
+    image: '/team/vaishnavi-verma.jpg',
+    imagePosition: 'object-[center_20%]',
+    bio: 'Founder and CEO of The Speaking Studio. A visionary young leader dedicated to empowering students with the confidence to communicate articulately, think critically, and lead purposefully across global stages.',
     social: {
       instagram: 'https://instagram.com/the.speaking.studio',
       email: 'thespeakingstudio25@gmail.com',
     },
     isFounder: true,
+    isExecutive: true,
+    isLead: true,
   },
   {
-    id: 'lead-01',
-    name: 'Head of Programs',
-    position: 'Programs Lead',
-    department: 'Academic',
-    bio: 'Designs and delivers all academic programs at The Speaking Studio. Brings expertise in curriculum development, pedagogy, and student mentorship to create transformative learning experiences.',
+    id: 'sparsh-vaish',
+    name: 'Sparsh Vaish',
+    position: 'President & Head of MUN Department',
+    department: 'Model United Nations',
+    image: '/team/sparsh-vaish.jpg',
+    imagePosition: 'object-[center_25%]',
+    bio: 'President and Head of the Model United Nations Department. Experienced in multilateral diplomacy, parliamentary rules, and crisis committees, mentoring delegates to excel and win accolades at premier conferences.',
     social: {
       instagram: 'https://instagram.com/the.speaking.studio',
+      email: 'thespeakingstudio25@gmail.com',
+    },
+    isExecutive: true,
+    isLead: true,
+  },
+  {
+    id: 'kanika-pahuja',
+    name: 'Kanika Pahuja',
+    position: 'Vice President & Head of Public Speaking',
+    department: 'Public Speaking',
+    image: '/team/kanika-pahuja.jpg',
+    imagePosition: 'object-top',
+    bio: 'Vice President and Head of Public Speaking. Passionate about speech craft, voice modulation, and stage presence, guiding hundreds of students to overcome stage fear and speak with conviction.',
+    social: {
+      instagram: 'https://instagram.com/the.speaking.studio',
+      email: 'thespeakingstudio25@gmail.com',
+    },
+    isExecutive: true,
+    isLead: true,
+  },
+  {
+    id: 'dhwaani-gera',
+    name: 'Dhwaani Gera',
+    position: 'Head of Marketing & Social Media',
+    department: 'Marketing & Communications',
+    image: '/team/dhwaani-gera.jpg',
+    imagePosition: 'object-[center_15%]',
+    bio: 'Head of Marketing and Social Media. Leads digital brand strategy, creative campaign storytelling, and social presence to connect with students and build an engaged, thriving international community.',
+    social: {
+      instagram: 'https://instagram.com/the.speaking.studio',
+      email: 'thespeakingstudio25@gmail.com',
     },
     isLead: true,
   },
   {
-    id: 'lead-02',
-    name: 'Community Manager',
-    position: 'Community & Outreach Lead',
-    department: 'Community',
-    bio: 'Manages The Speaking Studio\'s growing community, organising events, onboarding new members, and ensuring every student feels welcome and supported throughout their journey.',
+    id: 'girvaan-shhakya-pradhan',
+    name: 'Girvaan Shhakya Pradhan',
+    position: 'Head of Debate Department & Outreach',
+    department: 'Debate & Outreach',
+    image: '/team/girvaan-shhakya-pradhan.jpg',
+    imagePosition: 'object-[center_20%]',
+    bio: 'Head of Debate Department and Outreach. Seasoned competitive debater specialising in parliamentary formats, argumentative structure, rebuttal frameworks, and strategic institutional outreach.',
     social: {
       instagram: 'https://instagram.com/the.speaking.studio',
+      email: 'thespeakingstudio25@gmail.com',
     },
     isLead: true,
-  },
-  {
-    id: 'lead-03',
-    name: 'Creative Director',
-    position: 'Creative & Content Lead',
-    department: 'Creative',
-    bio: 'Oversees all creative output at The Speaking Studio — from social media content and design to video production and visual storytelling. Ensures the brand stays vibrant, authentic, and engaging.',
-    social: {
-      instagram: 'https://instagram.com/the.speaking.studio',
-      youtube: 'https://youtube.com/@the.speaking.studio',
-    },
-    isLead: true,
-  },
-  {
-    id: 'mentor-01',
-    name: 'MUN & Debate Mentor',
-    position: 'Senior Mentor — MUN & Debate',
-    department: 'Mentorship',
-    bio: 'An experienced MUN delegate and competitive debater who has participated in national and international conferences. Trains students in parliamentary procedure, research, and argumentation.',
-    social: {
-      instagram: 'https://instagram.com/the.speaking.studio',
-    },
-  },
-  {
-    id: 'mentor-02',
-    name: 'Communication Skills Mentor',
-    position: 'Senior Mentor — Communication',
-    department: 'Mentorship',
-    bio: 'Specialises in English communication and personality development. Has mentored over 100 students in building fluency, confidence, and professional communication skills.',
-    social: {
-      instagram: 'https://instagram.com/the.speaking.studio',
-    },
   },
 ];
+
