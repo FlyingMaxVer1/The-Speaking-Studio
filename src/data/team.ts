@@ -95,5 +95,19 @@ export const team: TeamMember[] = [
     },
     isLead: true,
   },
+  {
+    id: 'vrinda-sayal',
+    name: 'Vrinda Sayal',
+    position: 'Head of Management',
+    department: 'Management & Operations',
+    image: '/team/vrinda-sayal.jpg',
+    imagePosition: 'object-[center_20%]',
+    bio: 'Head of Management. Oversees organizational operations, program execution, logistics, and resource management to ensure seamless coordination across all studio initiatives and student sessions.',
+    social: {
+      instagram: 'https://instagram.com/the.speaking.studio',
+      email: 'thespeakingstudio25@gmail.com',
+    },
+    isLead: true,
+  },
 ];
 

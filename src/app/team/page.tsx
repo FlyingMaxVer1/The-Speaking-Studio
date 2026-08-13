@@ -65,7 +65,7 @@ export default function TeamPage() {
               description="Spearheading specialized academic tracks, media campaigns, and community outreach."
               className="mb-14"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {departmentLeads.map((member, i) => (
                 <TeamCard key={member.id} member={member} index={i} />
               ))}
