@@ -2,7 +2,7 @@
 
 A premium, multi-page website for **The Speaking Studio**, a youth-led educational organisation dedicated to developing confidence, communication, leadership, diplomacy, and life skills among students.
 
-**Live URL:** `http://localhost:3000` (development)
+**Live URL:** `www.thespeakingstudio.netlify.app` (development)
 
 ---
 
