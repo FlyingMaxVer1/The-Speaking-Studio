@@ -7,6 +7,7 @@ import {
   Heart,
   MapPin,
 } from 'lucide-react';
+import { WHATSAPP_COMMUNITY_URL } from '@/data/forms';
 
 const footerLinks = {
   'Quick Links': [
@@ -75,7 +76,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 flex-wrap">
                 {/* WhatsApp */}
                 <a
-                  href="https://chat.whatsapp.com/Fzeglh6Qbkd76Eh7MRz8kd?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGneCZ6bpHfvysyfFX_W-n4L0sGnmCp6AEfk1lH6cscFHVcPEuEhHrj1-tRf9g_aem_oEyBccgzUabEIOwUtvTzog"
+                  href={WHATSAPP_COMMUNITY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-stone-400 hover:text-[#25D366] hover:bg-white/20 transition-all duration-200"

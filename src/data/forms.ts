@@ -2,7 +2,7 @@
 
 export const FREE_MENTORSHIP_FORM_URL = 'https://forms.gle/SbNxqt83H2QTgbcf6';
 export const JOIN_TEAM_FORM_URL = 'https://forms.gle/BUAZyxXZqm3so6fv5';
-export const WHATSAPP_COMMUNITY_URL = 'https://chat.whatsapp.com/Fzeglh6Qbkd76Eh7MRz8kd?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGneCZ6bpHfvysyfFX_W-n4L0sGnmCp6AEfk1lH6cscFHVcPEuEhHrj1-tRf9g_aem_oEyBccgzUabEIOwUtvTzog';
+export const WHATSAPP_COMMUNITY_URL = 'https://chat.whatsapp.com/IL60UtWXLFED7ODU0eYtLz';
 
 export interface FormItem {
   id: string;

@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Mail, Sparkles, Award } from 'lucide-react';
+import { Mail, Sparkles } from 'lucide-react';
 import { type TeamMember } from '@/data/team';
 
 
@@ -50,24 +50,15 @@ export default function TeamCard({ member, index = 0, featured = false }: TeamCa
           {/* Subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none" />
 
-          {/* Badge at top of image */}
-          <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-            {member.isFounder ? (
+          {/* Founder badge at top of image */}
+          {member.isFounder && (
+            <div className="absolute top-3 left-3 pointer-events-none">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#C49A6C] text-white shadow-md backdrop-blur-md">
                 <Sparkles size={12} />
                 Founder &amp; CEO
               </span>
-            ) : member.isExecutive ? (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#5C6B3A] text-white shadow-md backdrop-blur-md">
-                <Award size={12} />
-                Executive Board
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-black/50 text-white shadow-md backdrop-blur-md">
-                Department Lead
-              </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Member Info */}
