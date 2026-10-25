@@ -2,7 +2,7 @@
 
 A premium, multi-page website for **The Speaking Studio**, a youth-led educational organisation dedicated to developing confidence, communication, leadership, diplomacy, and life skills among students.
 
-**Live URL:** `www.thespeakingstudio.netlify.app` (development)
+**Live URL:** [https://thespeakingstudio.netlify.app](https://thespeakingstudio.netlify.app) (production)
 
 ---
 
@@ -15,9 +15,7 @@ A premium, multi-page website for **The Speaking Studio**, a youth-led education
 ### Installation
 
 ```bash
-# Navigate to the project directory
-cd speaking-studio
-
+# Navigate to the project directory (if needed) or run from repo root
 # Install dependencies
 npm install
 
@@ -32,16 +30,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 📁 Project Structure
 
 ```
-speaking-studio/
-├── public/
-│   └── logo.png                 # Site logo — replace with original
+The-Speaking-Studio/
+├── public/                      # Static assets and team headshots
+│   └── logo.png                 # Site logo
 ├── src/
 │   ├── app/                     # Next.js App Router pages
 │   │   ├── about/
 │   │   ├── achievements/
 │   │   ├── community/
 │   │   ├── contact/
-│   │   ├── events/
 │   │   ├── faq/
 │   │   ├── forms/
 │   │   ├── gallery/
@@ -50,10 +47,10 @@ speaking-studio/
 │   │   ├── privacy/
 │   │   ├── programs/
 │   │   │   └── [slug]/          # Dynamic route for each program
-│   │   ├── resources/
 │   │   ├── team/
 │   │   ├── terms/
 │   │   ├── testimonials/
+│   │   ├── tssds/               # The Speaking Studio Diplomatic Summit (TSSDS 2027)
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── not-found.tsx
@@ -64,25 +61,28 @@ speaking-studio/
 │   │   │   └── Footer.tsx
 │   │   ├── sections/
 │   │   │   ├── CTASection.tsx
-│   │   │   ├── EventCard.tsx
 │   │   │   ├── FAQAccordion.tsx
 │   │   │   ├── FormCard.tsx
 │   │   │   ├── ProgramCard.tsx
 │   │   │   ├── StatsSection.tsx
 │   │   │   ├── TeamCard.tsx
 │   │   │   └── TestimonialsCarousel.tsx
+│   │   ├── tssds/
+│   │   │   ├── CountdownTimer.tsx
+│   │   │   ├── SummitAnnouncementBanner.tsx
+│   │   │   └── SummitPopupModal.tsx
 │   │   └── ui/
 │   │       ├── AnimatedCounter.tsx
+│   │       ├── ScrollToTop.tsx
 │   │       └── SectionHeading.tsx
 │   ├── data/                    # All content data files
 │   │   ├── achievements.ts
-│   │   ├── events.ts
 │   │   ├── faqs.ts
 │   │   ├── forms.ts
 │   │   ├── programs.ts
-│   │   ├── resources.ts
 │   │   ├── team.ts
-│   │   └── testimonials.ts
+│   │   ├── testimonials.ts
+│   │   └── tssds.ts
 │   └── lib/
 │       └── utils.ts
 ```
@@ -122,17 +122,14 @@ Edit `src/data/team.ts`. Add a new object to the `team` array:
 }
 ```
 
-### Adding New Events
-Edit `src/data/events.ts`. Add a new event object with `status: 'upcoming'` or `'past'`.
-
 ### Adding New Testimonials
 Edit `src/data/testimonials.ts`. Add a new testimonial with category `'student'`, `'parent'`, or `'mentor'`.
 
-### Adding Resources
-Edit `src/data/resources.ts`. Add a new resource and update `downloadUrl` when ready.
+### Updating Google Form Links & WhatsApp Community
+Edit `src/data/forms.ts`. Update the form URLs or the `WHATSAPP_COMMUNITY_URL` export with current links.
 
-### Updating Google Form Links
-Edit `src/data/forms.ts`. Update the `formUrl` field for each form with your actual Google Form URL.
+### Updating TSSDS Summit Details
+Edit `src/data/tssds.ts` to manage summit schedules, tracks, awards, FAQ items, and pre-registration links.
 
 ### Adding a New Program Page
 Programs are dynamically generated from `src/data/programs.ts`. To add a new program:
@@ -144,73 +141,73 @@ Programs are dynamically generated from `src/data/programs.ts`. To add a new pro
 ## 🖼️ Replacing Placeholder Images
 
 ### Logo
-Replace `public/logo.png` with the original speaking studio logo. The logo is used in:
+The site logo is located at `public/logo.png`. It is used in:
 - Navbar
 - Footer  
 - Browser favicon
 - Homepage hero
 
 ### Gallery Photos
-The gallery currently uses placeholder color tiles. To add real photos:
+The gallery currently uses placeholder graphic tiles. To add real photos:
 1. Place images in `public/gallery/`
 2. Update `src/app/gallery/page.tsx` with actual image paths
 
 ---
 
-## 🔗 Social Media Links (already configured)
+## 🔗 Social Media & Community Links
 
-| Platform  | URL |
-|-----------|-----|
-| Instagram | https://instagram.com/the.speaking.studio |
-| YouTube   | https://youtube.com/@the.speaking.studio  |
-| Pinterest | https://pin.it/3h3gVm4Uk                  |
-| Email     | thespeakingstudio25@gmail.com             |
+| Platform           | URL                                                    |
+|--------------------|--------------------------------------------------------|
+| Instagram          | https://instagram.com/the.speaking.studio              |
+| YouTube            | https://youtube.com/@the.speaking.studio               |
+| Pinterest          | https://pin.it/3h3gVm4Uk                               |
+| WhatsApp Community | https://chat.whatsapp.com/IL60UtWXLFED7ODU0eYtLz       |
+| Email              | thespeakingstudio25@gmail.com                          |
 
 ---
 
-## 📄 Pages
+## 📄 Pages & Routes
 
-| Page            | Route              |
-|-----------------|--------------------|
-| Home            | `/`                |
-| About           | `/about`           |
-| Programs        | `/programs`        |
-| Program Detail  | `/programs/[slug]` |
-| Mentorship      | `/mentorship`      |
-| Community       | `/community`       |
-| Events          | `/events`          |
-| Resources       | `/resources`       |
-| Team            | `/team`            |
-| Gallery         | `/gallery`         |
-| Testimonials    | `/testimonials`    |
-| Achievements    | `/achievements`    |
-| Forms           | `/forms`           |
-| Join Us         | `/join`            |
-| Contact         | `/contact`         |
-| FAQ             | `/faq`             |
-| Privacy Policy  | `/privacy`         |
-| Terms           | `/terms`           |
-| 404             | `/not-found`       |
+| Page            | Route              | Description |
+|-----------------|--------------------|-------------|
+| Home            | `/`                | Landing page with hero, statistics, programs, and testimonials |
+| TSSDS 2027      | `/tssds`           | The Speaking Studio Diplomatic Summit page |
+| About           | `/about`           | Mission, vision, core values, and community overview |
+| Programs        | `/programs`        | Catalog of courses and bootcamps |
+| Program Detail  | `/programs/[slug]` | Dedicated dynamic page for each specific program |
+| Mentorship      | `/mentorship`      | 1-on-1 and group mentorship initiatives |
+| Community       | `/community`       | Student network and engagement info |
+| Forms           | `/forms`           | Central hub for all application and registration links |
+| Join Us         | `/join`            | Team recruitment and community registration options |
+| Team            | `/team`            | Executive and departmental leadership directory |
+| Achievements    | `/achievements`    | Awards, competition wins, and student milestones |
+| Testimonials    | `/testimonials`    | Reviews from students, parents, and educators |
+| Gallery         | `/gallery`         | Event, workshop, and community moments |
+| Contact         | `/contact`         | Inquiry form, email, and social connections |
+| FAQ             | `/faq`             | Comprehensive answers to common questions |
+| Privacy Policy  | `/privacy`         | Organization privacy disclosures |
+| Terms           | `/terms`           | Terms of service and usage |
+| 404             | `/not-found`       | Custom error page |
 
 ---
 
 ## 🚢 Deployment
 
-```bash
-# Build for production
-npm run build
+The project is configured for deployment to **Netlify** using static export (`output: 'export'`) configured in `next.config.ts` and `netlify.toml`.
 
-# Start production server
-npm run start
+```bash
+# Build for production (outputs static build to `out/`)
+npm run build
 ```
 
-Deploy to [Vercel](https://vercel.com) for the easiest deployment — simply connect your GitHub repository.
+When changes are pushed to GitHub:
+- Netlify automatically builds and deploys updates to the live site at `https://thespeakingstudio.netlify.app`.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Framework:** Next.js 16 (App Router)
+- **Framework:** Next.js 16 (App Router, Static Export)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
 - **Animations:** Framer Motion
