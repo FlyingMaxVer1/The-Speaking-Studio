@@ -6,12 +6,14 @@ import {
   ArrowUp,
   Heart,
   MapPin,
+  Sparkles,
 } from 'lucide-react';
 import { WHATSAPP_COMMUNITY_URL } from '@/data/forms';
 
 const footerLinks = {
   'Quick Links': [
     { label: 'Home', href: '/' },
+    { label: 'TSSDS 2027 Summit', href: '/tssds' },
     { label: 'About Us', href: '/about' },
     { label: 'Team', href: '/team' },
     { label: 'Gallery', href: '/gallery' },
@@ -20,6 +22,7 @@ const footerLinks = {
     { label: 'FAQ', href: '/faq' },
   ],
   Programs: [
+    { label: 'TSSDS 2027 Summit', href: '/tssds' },
     { label: 'Public Speaking', href: '/programs/public-speaking' },
     { label: 'MUN', href: '/programs/mun' },
     { label: 'Debate', href: '/programs/debate' },
@@ -30,6 +33,7 @@ const footerLinks = {
   ],
   'Get Involved': [
     { label: 'Join Us', href: '/join' },
+    { label: 'TSSDS Pre-Registration', href: '/tssds' },
     { label: 'Mentorship', href: '/mentorship' },
     { label: 'Community', href: '/community' },
     { label: 'Forms', href: '/forms' },
@@ -40,8 +44,6 @@ const footerLinks = {
     { label: 'Terms & Conditions', href: '/terms' },
   ],
 };
-
-
 
 export default function Footer() {
   return (

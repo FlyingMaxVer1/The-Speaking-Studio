@@ -7,9 +7,18 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import SummitAnnouncementBanner from '@/components/tssds/SummitAnnouncementBanner';
 
-const navLinks = [
+interface NavLink {
+  label: string;
+  href: string;
+  badge?: string;
+  dropdown?: { label: string; href: string }[];
+}
+
+const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
+  { label: 'TSSDS 2027', href: '/tssds', badge: 'June \'27' },
   { label: 'About', href: '/about' },
   {
     label: 'Programs',
@@ -58,6 +67,9 @@ export default function Navbar() {
           : 'bg-transparent'
       )}
     >
+      {/* Top Summit Announcement Banner */}
+      <SummitAnnouncementBanner />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -95,7 +107,7 @@ export default function Navbar() {
                     className={cn(
                       'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                       pathname.startsWith(link.href)
-                        ? 'text-[#5C6B3A] bg-[#5C6B3A]/10'
+                        ? 'text-[#5C6B3A] bg-[#5C6B3A]/10 font-semibold'
                         : 'text-stone-600 hover:text-[#5C6B3A] hover:bg-stone-100'
                     )}
                   >
@@ -141,13 +153,20 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                    'relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                     pathname === link.href
-                      ? 'text-[#5C6B3A] bg-[#5C6B3A]/10'
+                      ? 'text-[#5C6B3A] bg-[#5C6B3A]/10 font-semibold'
+                      : link.badge
+                      ? 'text-[#5C6B3A] font-semibold hover:bg-[#5C6B3A]/10'
                       : 'text-stone-600 hover:text-[#5C6B3A] hover:bg-stone-100'
                   )}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {link.badge && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#C49A6C] text-[#1C1C1C] leading-none shadow-xs">
+                      {link.badge}
+                    </span>
+                  )}
                 </Link>
               )
             )}
@@ -196,13 +215,18 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'block px-4 py-3 rounded-xl text-sm font-medium transition-colors',
+                      'flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors',
                       pathname === link.href || pathname.startsWith(link.href + '/')
-                        ? 'text-[#5C6B3A] bg-[#5C6B3A]/10'
+                        ? 'text-[#5C6B3A] bg-[#5C6B3A]/10 font-semibold'
                         : 'text-stone-600 hover:bg-stone-50'
                     )}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    {link.badge && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#C49A6C] text-[#1C1C1C]">
+                        {link.badge}
+                      </span>
+                    )}
                   </Link>
                   {link.dropdown && (
                     <div className="ml-4 mt-1 space-y-1 border-l-2 border-[#C49A6C]/30 pl-3">
@@ -213,7 +237,7 @@ export default function Navbar() {
                           className={cn(
                             'block px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                             pathname === item.href
-                              ? 'text-[#5C6B3A] bg-[#5C6B3A]/10'
+                              ? 'text-[#5C6B3A] bg-[#5C6B3A]/10 font-medium'
                               : 'text-stone-500 hover:text-[#5C6B3A]'
                           )}
                         >
@@ -225,6 +249,12 @@ export default function Navbar() {
                 </div>
               ))}
               <div className="pt-3 pb-2 flex flex-col gap-2">
+                <Link
+                  href="/tssds"
+                  className="block px-4 py-3 text-center text-sm font-bold text-[#1C1C1C] bg-[#C49A6C] rounded-xl hover:bg-[#D4B48A] transition-colors"
+                >
+                  TSSDS 2027 Summit
+                </Link>
                 <Link
                   href="/forms"
                   className="block px-4 py-3 text-center text-sm font-semibold text-stone-600 border border-stone-200 rounded-xl hover:border-[#C49A6C]"

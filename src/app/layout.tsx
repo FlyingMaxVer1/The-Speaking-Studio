@@ -3,6 +3,7 @@ import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import SummitPopupModal from '@/components/tssds/SummitPopupModal';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -35,6 +36,8 @@ export const metadata: Metadata = {
     'youth organisation',
     'mentorship',
     'speaking skills',
+    'TSSDS',
+    'diplomacy summit',
   ],
   authors: [{ name: 'The Speaking Studio' }],
   creator: 'The Speaking Studio',
@@ -75,6 +78,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <SummitPopupModal />
       </body>
     </html>
   );
