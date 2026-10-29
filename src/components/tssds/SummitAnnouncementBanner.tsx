@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { X, ArrowRight, Sparkles } from 'lucide-react';
+import { X, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
-import { TSSDS_REGISTRATION_FORM_URL } from '@/data/tssds';
+import { CHAMPARENA_TSSDS_MUN_URL } from '@/data/tssds';
 
-const BANNER_STORAGE_KEY = 'tssds_banner_dismissed_v1';
+const BANNER_STORAGE_KEY = 'tssds_banner_dismissed_v2';
 
 export default function SummitAnnouncementBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,7 +45,7 @@ export default function SummitAnnouncementBanner() {
             <Sparkles size={10} /> TSSDS 2027
           </span>
           <span className="font-medium hidden md:inline text-white/90">
-            Diplomacy Summit Pre-Registrations Open • June 2027
+            Diplomacy Summit • Official Ticketing Partner: ChampArena
           </span>
         </div>
 
@@ -66,13 +66,13 @@ export default function SummitAnnouncementBanner() {
             Details
           </Link>
           <a
-            href={TSSDS_REGISTRATION_FORM_URL}
+            href={CHAMPARENA_TSSDS_MUN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 bg-[#C49A6C] hover:bg-[#D4B48A] text-[#1C1C1C] px-3 py-1 rounded-full font-bold text-[11px] transition-all shadow-sm group"
+            className="inline-flex items-center gap-1.5 bg-[#C49A6C] hover:bg-[#D4B48A] text-[#1C1C1C] px-3.5 py-1 rounded-full font-bold text-[11px] transition-all shadow-sm group"
           >
-            <span>Pre-Register</span>
-            <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+            <span>Book on ChampArena</span>
+            <ExternalLink size={11} className="group-hover:translate-x-0.5 transition-transform" />
           </a>
           <button
             onClick={handleDismiss}

@@ -3,11 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, Trophy, Sparkles, Globe, ExternalLink } from 'lucide-react';
+import { X, ArrowRight, Sparkles, Globe, ExternalLink, Ticket, ShieldCheck } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
-import { TSSDS_REGISTRATION_FORM_URL } from '@/data/tssds';
+import {
+  CHAMPARENA_TSSDS_MUN_URL,
+  CHAMPARENA_TAKKAR_DEBATE_URL,
+  CHAMPARENA_DIL_KI_BAAT_URL,
+} from '@/data/tssds';
 
-const STORAGE_KEY = 'tssds_summit_modal_dismissed_v1';
+const STORAGE_KEY = 'tssds_summit_modal_dismissed_v2';
 
 export default function SummitPopupModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,13 +81,13 @@ export default function SummitPopupModal() {
 
             <div className="p-6 sm:p-8 space-y-6">
               {/* Header Badge */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#5C6B3A]/10 text-[#5C6B3A] border border-[#5C6B3A]/20">
                   <Globe size={12} />
                   Pan-India Online Summit • June 2027
                 </span>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C49A6C]">
-                  <Sparkles size={12} /> Pre-Registrations Open
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#8B6914] bg-[#C49A6C]/15 border border-[#C49A6C]/30 px-2.5 py-0.5 rounded-full">
+                  <ShieldCheck size={11} /> Ticketing on ChampArena
                 </span>
               </div>
 
@@ -108,31 +112,63 @@ export default function SummitPopupModal() {
                 <CountdownTimer variant="modal" />
               </div>
 
-              {/* Fast highlight pills */}
-              <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                <div className="p-2 rounded-xl bg-[#F5F0E8] border border-stone-200">
-                  <div className="font-bold text-[#5C6B3A]">MUN</div>
-                  <div className="text-stone-500 text-[10px]">Committees & Blocs</div>
+              {/* Direct Championship Quick Links */}
+              <div className="space-y-2">
+                <div className="text-xs font-bold text-stone-600 uppercase tracking-wider mb-2">
+                  Choose Championship on ChampArena:
                 </div>
-                <div className="p-2 rounded-xl bg-[#F5F0E8] border border-stone-200">
-                  <div className="font-bold text-[#C49A6C]">Debate</div>
-                  <div className="text-stone-500 text-[10px]">National Motions</div>
-                </div>
-                <div className="p-2 rounded-xl bg-[#F5F0E8] border border-stone-200">
-                  <div className="font-bold text-[#8B6914]">Public Speaking</div>
-                  <div className="text-stone-500 text-[10px]">Oratory Honors</div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                  <a
+                    href={CHAMPARENA_TSSDS_MUN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl bg-[#F5F0E8] border border-stone-200 hover:border-[#5C6B3A] hover:bg-white transition-all text-center group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="font-bold text-[#5C6B3A] group-hover:underline">MUN Track</div>
+                      <div className="text-stone-500 text-[10px] mt-0.5">TSSDS 2027</div>
+                    </div>
+                    <div className="mt-2 text-xs font-semibold text-stone-800">₹299</div>
+                  </a>
+
+                  <a
+                    href={CHAMPARENA_TAKKAR_DEBATE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl bg-[#F5F0E8] border border-stone-200 hover:border-[#8B6914] hover:bg-white transition-all text-center group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="font-bold text-[#8B6914] group-hover:underline">Takkar Debate</div>
+                      <div className="text-stone-500 text-[10px] mt-0.5">Championship</div>
+                    </div>
+                    <div className="mt-2 text-xs font-semibold text-stone-800">₹249</div>
+                  </a>
+
+                  <a
+                    href={CHAMPARENA_DIL_KI_BAAT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl bg-[#F5F0E8] border border-stone-200 hover:border-[#C49A6C] hover:bg-white transition-all text-center group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="font-bold text-[#C49A6C] group-hover:underline">Dil Ki Baat</div>
+                      <div className="text-stone-500 text-[10px] mt-0.5">Public Speaking</div>
+                    </div>
+                    <div className="mt-2 text-xs font-semibold text-stone-800">₹249</div>
+                  </a>
                 </div>
               </div>
 
               {/* Action buttons */}
               <div className="space-y-3 pt-1">
                 <a
-                  href={TSSDS_REGISTRATION_FORM_URL}
+                  href={CHAMPARENA_TSSDS_MUN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#5C6B3A] text-white font-semibold text-sm hover:bg-[#404B28] shadow-md hover:shadow-lg transition-all duration-200 group"
                 >
-                  <span>Pre-Register on Official Google Form</span>
+                  <Ticket size={16} />
+                  <span>Book Tickets on ChampArena</span>
                   <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
 
@@ -142,7 +178,7 @@ export default function SummitPopupModal() {
                     onClick={handleDismiss}
                     className="inline-flex items-center gap-1 font-semibold text-[#5C6B3A] hover:text-[#404B28] underline underline-offset-4"
                   >
-                    View Full Details, Fees & Passes <ArrowRight size={14} />
+                    View All Passes & Details <ArrowRight size={14} />
                   </Link>
                   <button
                     onClick={handleDismiss}
