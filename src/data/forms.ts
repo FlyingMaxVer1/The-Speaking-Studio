@@ -1,6 +1,11 @@
 // src/data/forms.ts
 
-import { TSSDS_REGISTRATION_FORM_URL } from './tssds';
+import {
+  CHAMPARENA_TSSDS_MUN_URL,
+  CHAMPARENA_TAKKAR_DEBATE_URL,
+  CHAMPARENA_DIL_KI_BAAT_URL,
+  TSSDS_REGISTRATION_URL,
+} from './tssds';
 
 export const FREE_MENTORSHIP_FORM_URL = 'https://forms.gle/SbNxqt83H2QTgbcf6';
 export const JOIN_TEAM_FORM_URL = 'https://forms.gle/BUAZyxXZqm3so6fv5';
@@ -16,20 +21,50 @@ export interface FormItem {
   isComingSoon?: boolean;
   category: 'registration' | 'application' | 'community';
   color: string;
+  badge?: string;
 }
 
-export const forms: FormItem[] = [
+export const champarenaCompetitions: FormItem[] = [
   {
-    id: 'tssds-registration',
-    title: 'TSSDS 2027 Pre-Registration',
+    id: 'tssds-mun',
+    title: 'TSSDS 2027 – MUN',
     description:
-      'Pre-register for The Speaking Studio Diplomacy Summit 2027. Compete in 3 National Championships (MUN, Debate, Public Speaking) with verified certificates and cash prizes.',
-    icon: 'Trophy',
-    ctaText: 'Pre-Register for Summit',
-    formUrl: TSSDS_REGISTRATION_FORM_URL,
+      'Official Model United Nations track at The Speaking Studio Diplomacy Summit 2027. Represent sovereign nations in high-stakes simulations. Ticketing powered by ChampArena.',
+    icon: 'Globe',
+    ctaText: 'Book on ChampArena',
+    formUrl: CHAMPARENA_TSSDS_MUN_URL,
     category: 'registration',
     color: '#5C6B3A',
+    badge: 'Ticketing Partner',
   },
+  {
+    id: 'takkar-debate',
+    title: 'Takkar – Debate Championship',
+    description:
+      'Structured, high-tempo national debate championship at TSSDS 2027. Defend motions with logic and conviction. Official tickets on ChampArena.',
+    icon: 'MessageSquare',
+    ctaText: 'Book on ChampArena',
+    formUrl: CHAMPARENA_TAKKAR_DEBATE_URL,
+    category: 'registration',
+    color: '#8B6914',
+    badge: 'Ticketing Partner',
+  },
+  {
+    id: 'dil-ki-baat',
+    title: 'Dil Ki Baat – Public Speaking',
+    description:
+      'Command the national digital stage with rhetorical precision and storytelling. Flagship oratory championship at TSSDS 2027 on ChampArena.',
+    icon: 'Mic',
+    ctaText: 'Book on ChampArena',
+    formUrl: CHAMPARENA_DIL_KI_BAAT_URL,
+    category: 'registration',
+    color: '#C49A6C',
+    badge: 'Ticketing Partner',
+  },
+];
+
+export const forms: FormItem[] = [
+  ...champarenaCompetitions,
   {
     id: 'free-mentorship',
     title: 'Free Mentorship Session',
@@ -39,7 +74,8 @@ export const forms: FormItem[] = [
     ctaText: 'Register for Free Class',
     formUrl: FREE_MENTORSHIP_FORM_URL,
     category: 'registration',
-    color: '#8B6914',
+    color: '#5C6B3A',
+    badge: 'Google Form',
   },
   {
     id: 'join-team',
@@ -51,5 +87,6 @@ export const forms: FormItem[] = [
     formUrl: JOIN_TEAM_FORM_URL,
     category: 'application',
     color: '#C49A6C',
+    badge: 'Google Form',
   },
 ];

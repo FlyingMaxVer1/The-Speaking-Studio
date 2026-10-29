@@ -33,7 +33,7 @@ const footerLinks = {
   ],
   'Get Involved': [
     { label: 'Join Us', href: '/join' },
-    { label: 'TSSDS Pre-Registration', href: '/tssds' },
+    { label: 'TSSDS 2027 Registration', href: '/tssds' },
     { label: 'Mentorship', href: '/mentorship' },
     { label: 'Community', href: '/community' },
     { label: 'Forms', href: '/forms' },

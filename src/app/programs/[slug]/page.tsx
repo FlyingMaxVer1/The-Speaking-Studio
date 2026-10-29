@@ -1,11 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
+import {
+  ArrowLeft,
+  CheckCircle2,
+  ArrowRight,
+  Trophy,
+  Ticket,
+  ExternalLink,
+} from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { LucideProps } from 'lucide-react';
 import { programs } from '@/data/programs';
 import { FREE_MENTORSHIP_FORM_URL } from '@/data/forms';
+import {
+  CHAMPARENA_TSSDS_MUN_URL,
+  CHAMPARENA_TAKKAR_DEBATE_URL,
+  CHAMPARENA_DIL_KI_BAAT_URL,
+} from '@/data/tssds';
 import CTASection from '@/components/sections/CTASection';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import ProgramCard from '@/components/sections/ProgramCard';
@@ -19,6 +31,46 @@ function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
 }
 
 type Params = { slug: string };
+
+const championshipSpotlights: Record<
+  string,
+  {
+    title: string;
+    badge: string;
+    description: string;
+    fee: number;
+    url: string;
+    date: string;
+  }
+> = {
+  mun: {
+    title: 'TSSDS 2027 – Model United Nations',
+    badge: 'Official Diplomatic Summit',
+    description:
+      'Represent sovereign nations in simulated UN committees, debate global security agendas, and build diplomatic resolutions. Official ticketing hosted on ChampArena.',
+    fee: 299,
+    url: CHAMPARENA_TSSDS_MUN_URL,
+    date: 'June 2027 • Summer Holidays',
+  },
+  debate: {
+    title: 'Takkar – Debate Championship',
+    badge: 'National Debate Championship',
+    description:
+      'Test your argumentative rigour, rebuttal agility, and conviction under cross-examination in our high-stakes national tournament. Official ticketing hosted on ChampArena.',
+    fee: 249,
+    url: CHAMPARENA_TAKKAR_DEBATE_URL,
+    date: 'June 2027 • Summer Holidays',
+  },
+  'public-speaking': {
+    title: 'Dil Ki Baat – Public Speaking Championship',
+    badge: 'National Oratory Championship',
+    description:
+      'Deliver powerful speeches that move audiences. Evaluated on vocal dynamism, rhetorical structure, and stage presence. Official ticketing hosted on ChampArena.',
+    fee: 249,
+    url: CHAMPARENA_DIL_KI_BAAT_URL,
+    date: 'June 2027 • Summer Holidays',
+  },
+};
 
 export async function generateStaticParams(): Promise<Params[]> {
   return programs.map((p) => ({ slug: p.slug }));
@@ -47,6 +99,8 @@ export default async function ProgramDetailPage({ params }: { params: Promise<Pa
     category: program.title,
   }));
 
+  const spotlight = championshipSpotlights[slug];
+
   return (
     <>
       {/* Hero */}
@@ -66,7 +120,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<Pa
             <div>
               {/* Icon */}
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xs"
                 style={{ backgroundColor: program.color + '20' }}
               >
                 <DynamicIcon name={program.icon} size={32} style={{ color: program.color }} />
@@ -93,16 +147,30 @@ export default async function ProgramDetailPage({ params }: { params: Promise<Pa
                 {program.fullDescription}
               </p>
 
-              <a
-                href={FREE_MENTORSHIP_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-white text-sm hover:scale-105 hover:shadow-lg transition-all duration-200 group"
-                style={{ backgroundColor: program.color }}
-              >
-                Register for Free Mentorship
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-              </a>
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href={FREE_MENTORSHIP_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-white text-sm hover:scale-105 hover:shadow-lg transition-all duration-200 group"
+                  style={{ backgroundColor: program.color }}
+                >
+                  Register for Free Mentorship
+                  <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                </a>
+
+                {spotlight && (
+                  <a
+                    href={spotlight.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-bold text-stone-800 bg-white border border-stone-300 text-sm hover:border-[#C49A6C] hover:text-[#C49A6C] shadow-xs transition-all duration-200"
+                  >
+                    <Ticket size={16} className="text-[#C49A6C]" />
+                    <span>Compete at TSSDS 2027</span>
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* Right card: Skills */}
@@ -127,6 +195,54 @@ export default async function ProgramDetailPage({ params }: { params: Promise<Pa
           </div>
         </div>
       </section>
+
+      {/* Championship Spotlight Banner for relevant programs */}
+      {spotlight && (
+        <section className="py-12 bg-gradient-to-r from-[#404B28] via-[#5C6B3A] to-[#404B28] text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C49A6C] text-[#1C1C1C]">
+                  <Trophy size={14} /> {spotlight.badge}
+                </div>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  {spotlight.title}
+                </h3>
+                <p className="text-white/85 text-sm sm:text-base leading-relaxed max-w-xl">
+                  {spotlight.description}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-white/80 pt-1">
+                  <span>📅 {spotlight.date}</span>
+                  <span>•</span>
+                  <span>🎟️ ₹{spotlight.fee} Entry</span>
+                  <span>•</span>
+                  <span className="text-[#D4B48A] font-semibold">Official Ticketing: ChampArena</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto flex-shrink-0">
+                <a
+                  href={spotlight.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#C49A6C] hover:bg-[#D4B48A] text-[#1C1C1C] font-bold text-sm transition-all shadow-md group"
+                >
+                  <Ticket size={16} />
+                  <span>Book on ChampArena</span>
+                  <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                </a>
+                <Link
+                  href="/tssds"
+                  className="inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-colors border border-white/15"
+                >
+                  <span>Summit Overview</span>
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Benefits */}
       <section className="py-20 bg-white">

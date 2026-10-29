@@ -1,7 +1,17 @@
 // src/data/tssds.ts
 
-export const TSSDS_REGISTRATION_FORM_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSfJV5iv9Jm1vQPpf8YpWzYoUelDJAffSa29nZlW0K5MoftnxQ/viewform';
+// Official ChampArena Registration URLs
+export const CHAMPARENA_TSSDS_MUN_URL =
+  'https://champarena.co.in/e/thespeakingstudiodiplomacysummit';
+export const CHAMPARENA_TAKKAR_DEBATE_URL =
+  'https://champarena.co.in/e/takkar-debate-championship';
+export const CHAMPARENA_DIL_KI_BAAT_URL =
+  'https://champarena.co.in/e/dil-ki-baat-public-speaking-championship';
+
+// Flagship registration URL on official ticketing partner ChampArena
+export const TSSDS_REGISTRATION_URL = CHAMPARENA_TSSDS_MUN_URL;
+// Backward compatibility alias (Google Forms closed until 31st Dec 2026)
+export const TSSDS_REGISTRATION_FORM_URL = TSSDS_REGISTRATION_URL;
 
 export const TSSDS_INSTAGRAM_URL = 'https://www.instagram.com/the.speaking.studio/';
 export const TSSDS_OFFICIAL_URL = 'https://thespeakingstudio.netlify.app/tssds';
@@ -18,12 +28,13 @@ export interface Championship {
   description: string;
   focusAreas: string[];
   fee: number;
+  registrationUrl: string;
 }
 
 export const championships: Championship[] = [
   {
     id: 'mun',
-    name: 'Model United Nations',
+    name: 'TSSDS 2027 – Model United Nations',
     shortName: 'MUN',
     category: 'Diplomacy & Geopolitics',
     tagline: 'Draft resolutions, negotiate treaties, and defend national foreign policy.',
@@ -31,28 +42,31 @@ export const championships: Championship[] = [
       'Represent sovereign nations in high-stakes committee simulations. Debate pressing global security, human rights, and economic agendas against delegate talent from across India.',
     focusAreas: ['Resolution Drafting', 'Foreign Policy', 'Lobbying & Bloc Building', 'Point of Information & Crisis Handling'],
     fee: 299,
+    registrationUrl: CHAMPARENA_TSSDS_MUN_URL,
   },
   {
     id: 'debate',
-    name: 'Debate Championship',
-    shortName: 'Debate',
+    name: 'Takkar – Debate Championship',
+    shortName: 'Takkar Debate',
     category: 'Competitive Argumentation',
     tagline: 'Defend your motions with logic, rebut on your feet, and dismantle opposition cases.',
     description:
       'Structured, high-tempo debate rounds designed to test your logical rigour, rebuttal speed, and conviction under cross-examination.',
     focusAreas: ['Motion Analysis', 'First-Principles Arguments', 'Cross-Examination Rebuttal', 'Structured Refutation'],
     fee: 249,
+    registrationUrl: CHAMPARENA_TAKKAR_DEBATE_URL,
   },
   {
     id: 'public-speaking',
-    name: 'Public Speaking Championship',
-    shortName: 'Public Speaking',
+    name: 'Dil Ki Baat – Public Speaking Championship',
+    shortName: 'Dil Ki Baat',
     category: 'Oratory & Influence',
     tagline: 'Command the room with rhetorical precision, vocal control, and memorable storytelling.',
     description:
       'Craft and deliver speeches that move audiences. Judged on vocal dynamism, narrative structure, emotional cadence, and real stage presence.',
     focusAreas: ['Story Arc & Rhetoric', 'Vocal Modulation', 'Audience Persuasion', 'Impromptu Delivery'],
     fee: 249,
+    registrationUrl: CHAMPARENA_DIL_KI_BAAT_URL,
   },
 ];
 
@@ -65,38 +79,41 @@ export interface PassOption {
   description: string;
   features: string[];
   isPopular?: boolean;
+  registrationUrl?: string;
 }
 
 export const passes: PassOption[] = [
   {
     id: 'single-debate',
-    title: 'Debate Championship',
+    title: 'Takkar – Debate Championship',
     price: 249,
     description: 'Entry to all competitive debate rounds, motions, and adjudication.',
     features: [
-      'Full participation in Debate Championship',
+      'Full participation in Takkar Debate Championship',
       'Comprehensive preparation kits & motions guide',
       'Verified Certificate of Participation',
       'Eligibility for Cash Prizes & Awards',
       'Access to training & masterclasses',
     ],
+    registrationUrl: CHAMPARENA_TAKKAR_DEBATE_URL,
   },
   {
     id: 'single-speaking',
-    title: 'Public Speaking Championship',
+    title: 'Dil Ki Baat – Public Speaking',
     price: 249,
     description: 'Entry to all speech rounds, themes, and expert evaluation.',
     features: [
-      'Full participation in Public Speaking Championship',
+      'Full participation in Dil Ki Baat Championship',
       'Speech framework & preparation kits',
       'Verified Certificate of Participation',
       'Eligibility for Cash Prizes & Awards',
       'Access to training & masterclasses',
     ],
+    registrationUrl: CHAMPARENA_DIL_KI_BAAT_URL,
   },
   {
     id: 'single-mun',
-    title: 'Model United Nations',
+    title: 'TSSDS 2027 – Model United Nations',
     price: 299,
     description: 'Committee country allocation, study guide, and diplomatic sessions.',
     features: [
@@ -106,6 +123,7 @@ export const passes: PassOption[] = [
       'Eligibility for Best Delegate & Cash Prizes',
       'Access to diplomatic training masterclasses',
     ],
+    registrationUrl: CHAMPARENA_TSSDS_MUN_URL,
   },
   {
     id: 'duo-pass',
@@ -129,7 +147,7 @@ export const passes: PassOption[] = [
     badge: 'Best Value',
     price: 699,
     originalPrice: 797,
-    description: 'The ultimate summit experience: compete in MUN, Debate, and Public Speaking.',
+    description: 'The ultimate summit experience: compete in MUN, Takkar Debate, and Dil Ki Baat.',
     features: [
       'Full access to all 3 National Championships',
       'All committee guides, motions & speech kits',
@@ -187,7 +205,7 @@ export const faqs = [
   {
     question: 'When will exact dates and round schedules be announced?',
     answer:
-      'The summit is tentatively scheduled for June 2027 during the summer holidays, spread comfortably across 2 weekends. Exact committee schedules, round timings, and agendas are detailed inside the pre-registration form and will be emailed to all pre-registered delegates.',
+      'The summit is tentatively scheduled for June 2027 during the summer holidays, spread comfortably across 2 weekends. Exact committee schedules, round timings, and agendas are detailed inside each official ChampArena event portal and will be emailed to all registered delegates.',
   },
   {
     question: 'Can I participate in more than one championship?',
@@ -197,6 +215,6 @@ export const faqs = [
   {
     question: 'What do I need to prepare before the summit?',
     answer:
-      'Once you pre-register, you will receive our official background guides, committee agendas, debate motion primers, and oratory themes. We also run pre-summit masterclasses to help you master rules of procedure and speech structuring.',
+      'Once you register on ChampArena, you will receive our official background guides, committee agendas, debate motion primers, and oratory themes. We also run pre-summit masterclasses to help you master rules of procedure and speech structuring.',
   },
 ];

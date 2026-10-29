@@ -6,7 +6,6 @@ import {
   Trophy,
   Mic,
   MessageSquare,
-  Sparkles,
   ExternalLink,
   CheckCircle2,
   Calendar,
@@ -14,26 +13,28 @@ import {
   ArrowRight,
   Zap,
   Users,
+  Ticket,
 } from 'lucide-react';
 import CountdownTimer from '@/components/tssds/CountdownTimer';
 import SectionHeading from '@/components/ui/SectionHeading';
+import SummitHeroCTA from '@/components/tssds/SummitHeroCTA';
+import PassesGrid from '@/components/tssds/PassesGrid';
+import BottomSummitCTA from '@/components/tssds/BottomSummitCTA';
 import {
-  TSSDS_REGISTRATION_FORM_URL,
   TSSDS_INSTAGRAM_URL,
   championships,
-  passes,
   perks,
   faqs,
 } from '@/data/tssds';
 
 export const metadata: Metadata = {
-  title: 'TSSDS 2027 — The Speaking Studio Diplomacy Summit',
+  title: 'TSSDS 2027 — The Speaking Studio Diplomacy Summit | ChampArena Ticketing',
   description:
-    'An online national youth summit bringing together aspiring diplomats, debaters, and public speakers from across India. Compete in 3 national championships with verified certificates and cash prizes.',
+    'An online national youth summit bringing together aspiring diplomats, debaters, and public speakers from across India. Compete in 3 national championships with verified certificates and cash prizes. Official ticketing via ChampArena.',
   openGraph: {
     title: 'TSSDS 2027 — The Speaking Studio Diplomacy Summit',
     description:
-      'Compete in 3 National Championships: MUN, Debate, and Public Speaking. June 2027. Open to students across India.',
+      'Compete in 3 National Championships: MUN, Takkar Debate, and Dil Ki Baat Public Speaking. June 2027. Official ticketing via ChampArena.',
     url: 'https://thespeakingstudio.netlify.app/tssds',
   },
 };
@@ -59,11 +60,13 @@ export default function TSSDSPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           {/* Top Trust Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-[#C49A6C]/40 px-4 py-1.5 rounded-full text-xs font-semibold text-[#5C6B3A] shadow-sm mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#C49A6C]/40 px-4 py-1.5 rounded-full text-xs font-semibold text-[#5C6B3A] shadow-xs mb-6 flex-wrap justify-center">
             <Globe size={14} className="text-[#C49A6C]" />
             <span>National Online Youth Summit • June 2027</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#5C6B3A]" />
-            <span className="text-[#1C1C1C]">Pan-India Registration</span>
+            <span className="text-[#8B6914] flex items-center gap-1 font-bold">
+              <Ticket size={12} /> Official Ticketing: ChampArena
+            </span>
           </div>
 
           {/* Main Headline */}
@@ -90,15 +93,7 @@ export default function TSSDSPage() {
 
           {/* Primary Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-            <a
-              href={TSSDS_REGISTRATION_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#5C6B3A] text-white font-semibold text-base hover:bg-[#404B28] shadow-lg hover:shadow-xl transition-all duration-200 group"
-            >
-              <span>Pre-Register on Google Form</span>
-              <ExternalLink size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+            <SummitHeroCTA />
 
             <a
               href="#passes"
@@ -137,7 +132,7 @@ export default function TSSDSPage() {
           <SectionHeading
             eyebrow="National Competitive Tracks"
             title="Three Flagship Championships"
-            description="Compete in your primary discipline or enter multiple tracks to test your versatile diplomatic and oratory skillset."
+            description="Compete in your primary discipline or enter multiple tracks to test your versatile diplomatic and oratory skillset. Tickets hosted on ChampArena."
             className="mb-14 text-center"
           />
 
@@ -161,9 +156,14 @@ export default function TSSDSPage() {
                       <div className="w-14 h-14 rounded-2xl bg-white border border-stone-200 flex items-center justify-center text-[#5C6B3A] group-hover:bg-[#5C6B3A] group-hover:text-white transition-colors duration-300 shadow-sm">
                         <Icon size={26} />
                       </div>
-                      <span className="text-xs font-bold text-[#8B6914] bg-[#C49A6C]/10 border border-[#C49A6C]/30 px-3 py-1 rounded-full">
-                        ₹{champ.fee} Entry
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-bold text-stone-600 bg-white border border-stone-200 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          ChampArena
+                        </span>
+                        <span className="text-xs font-bold text-[#8B6914] bg-[#C49A6C]/10 border border-[#C49A6C]/30 px-3 py-1 rounded-full">
+                          ₹{champ.fee}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Championship Name & Category */}
@@ -204,13 +204,13 @@ export default function TSSDSPage() {
                   {/* Card Bottom CTA */}
                   <div className="pt-4 border-t border-stone-200">
                     <a
-                      href={TSSDS_REGISTRATION_FORM_URL}
+                      href={champ.registrationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-white border border-stone-300 text-stone-800 text-sm font-semibold hover:bg-[#5C6B3A] hover:text-white hover:border-[#5C6B3A] transition-all duration-200"
+                      className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-white border border-stone-300 text-stone-800 text-sm font-semibold hover:bg-[#5C6B3A] hover:text-white hover:border-[#5C6B3A] transition-all duration-200 group/btn"
                     >
-                      <span>Pre-Register for {champ.shortName}</span>
-                      <ExternalLink size={14} />
+                      <span>Book on ChampArena</span>
+                      <ExternalLink size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
                     </a>
                   </div>
                 </div>
@@ -226,116 +226,14 @@ export default function TSSDSPage() {
           <SectionHeading
             eyebrow="Registration & Passes"
             title="Transparent, Accessible Fees"
-            description="Choose single competition entry or bundle championships to maximize savings and compete for multiple national titles."
+            description="Choose single competition entry or bundle championships to maximize savings and compete for multiple national titles. All ticketing powered by ChampArena."
             className="mb-14 text-center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
-            {passes.map((pass) => (
-              <div
-                key={pass.id}
-                className={`rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 relative ${
-                  pass.isPopular
-                    ? 'bg-[#1C1C1C] text-white border-2 border-[#C49A6C] shadow-2xl lg:-translate-y-2'
-                    : 'bg-white text-[#1C1C1C] border border-stone-200 shadow-sm hover:shadow-md'
-                }`}
-              >
-                {/* Popular or Savings Badge */}
-                {pass.badge && (
-                  <div className="absolute -top-3 left-6">
-                    <span
-                      className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm ${
-                        pass.isPopular
-                          ? 'bg-[#C49A6C] text-[#1C1C1C]'
-                          : 'bg-[#5C6B3A] text-white'
-                      }`}
-                    >
-                      <Sparkles size={12} />
-                      {pass.badge}
-                    </span>
-                  </div>
-                )}
-
-                <div>
-                  <h3
-                    className={`font-display font-bold text-xl sm:text-2xl mt-2 ${
-                      pass.isPopular ? 'text-white' : 'text-[#1C1C1C]'
-                    }`}
-                  >
-                    {pass.title}
-                  </h3>
-
-                  <p
-                    className={`text-xs mt-1 mb-6 leading-relaxed ${
-                      pass.isPopular ? 'text-stone-300' : 'text-stone-600'
-                    }`}
-                  >
-                    {pass.description}
-                  </p>
-
-                  {/* Price Block */}
-                  <div className="flex items-baseline gap-2 mb-6">
-                    <span className="font-display font-extrabold text-4xl sm:text-5xl tracking-tight">
-                      ₹{pass.price}
-                    </span>
-                    {pass.originalPrice && (
-                      <span
-                        className={`text-sm line-through ${
-                          pass.isPopular ? 'text-stone-500' : 'text-stone-400'
-                        }`}
-                      >
-                        ₹{pass.originalPrice}
-                      </span>
-                    )}
-                    <span
-                      className={`text-xs font-medium ${
-                        pass.isPopular ? 'text-stone-400' : 'text-stone-500'
-                      }`}
-                    >
-                      / delegate
-                    </span>
-                  </div>
-
-                  {/* Feature Checklist */}
-                  <ul className="space-y-2.5 mb-8 text-xs sm:text-sm">
-                    {pass.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-2.5">
-                        <CheckCircle2
-                          size={16}
-                          className={`flex-shrink-0 mt-0.5 ${
-                            pass.isPopular ? 'text-[#C49A6C]' : 'text-[#5C6B3A]'
-                          }`}
-                        />
-                        <span
-                          className={pass.isPopular ? 'text-stone-200' : 'text-stone-700'}
-                        >
-                          {feat}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Primary CTA */}
-                <a
-                  href={TSSDS_REGISTRATION_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm transition-all duration-200 shadow-sm ${
-                    pass.isPopular
-                      ? 'bg-[#C49A6C] text-[#1C1C1C] hover:bg-[#D4B48A]'
-                      : 'bg-[#5C6B3A] text-white hover:bg-[#404B28]'
-                  }`}
-                >
-                  <span>Select Pass & Pre-Register</span>
-                  <ExternalLink size={16} />
-                </a>
-              </div>
-            ))}
-          </div>
+          <PassesGrid />
 
           <p className="text-center text-xs text-stone-500 mt-8 max-w-xl mx-auto">
-            All passes include admission to corresponding competition tracks, preparation materials, evaluation rubrics, and participation certificates. Payment and confirmation details are processed through the pre-registration form.
+            All passes include admission to corresponding competition tracks, preparation materials, evaluation rubrics, and participation certificates. Payment and confirmation details are processed securely via ChampArena.
           </p>
         </div>
       </section>
@@ -433,7 +331,7 @@ export default function TSSDSPage() {
             <div className="mt-8 p-4 rounded-2xl bg-[#5C6B3A]/10 border border-[#5C6B3A]/20 flex items-center gap-3 text-xs sm:text-sm text-[#404B28] font-medium">
               <ShieldCheck size={20} className="flex-shrink-0 text-[#5C6B3A]" />
               <span>
-                Exact dates, round schedules, committee agendas, and debate motions are detailed in the official pre-registration form. Pre-register now to receive priority updates.
+                Exact dates, round schedules, committee agendas, and debate motions are detailed in each official ChampArena event portal. Book now to receive priority updates.
               </span>
             </div>
           </div>
@@ -446,7 +344,7 @@ export default function TSSDSPage() {
           <SectionHeading
             eyebrow="Got Questions?"
             title="Frequently Asked Questions"
-            description="Everything you need to know about pre-registration, championships, and summit logistics."
+            description="Everything you need to know about ChampArena registration, championships, and summit logistics."
             className="mb-14 text-center"
           />
 
@@ -476,7 +374,7 @@ export default function TSSDSPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#C49A6C]/20 text-[#D4B48A] border border-[#C49A6C]/30 mb-6">
-            <Zap size={14} /> Pre-Registrations Now Open
+            <Zap size={14} /> Official Ticketing on ChampArena
           </span>
 
           <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight mb-6">
@@ -485,19 +383,11 @@ export default function TSSDSPage() {
           </h2>
 
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Committees fill quickly and pre-registration grants you priority committee choices, prep kits, and early masterclass invitations.
+            Committees fill quickly and registration on ChampArena grants you priority committee choices, prep kits, and early masterclass invitations.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={TSSDS_REGISTRATION_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#5C6B3A] text-white font-bold text-base hover:bg-[#7A8F4E] shadow-xl hover:shadow-2xl transition-all duration-200 group"
-            >
-              <span>Complete Official Pre-Registration</span>
-              <ExternalLink size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+            <BottomSummitCTA />
 
             <a
               href={TSSDS_INSTAGRAM_URL}
